@@ -9,7 +9,7 @@ so you can concentrate on your app alone.
 
 
 
-Register an API-Key
+## H2 Register an API-Key
 ```
 ~$ curl localhost:3000/register
 {
@@ -23,7 +23,7 @@ The "_id" value serves as API-Key.
 
 
 
-Add a Subscription to your account
+## H2 Add a Subscription to your account
 ```
 ~$ curl localhost:3000/j9e4zmplh3/add/https%3A%2F%2Fnews.ycombinator.com%2Frss
 {
@@ -43,7 +43,7 @@ The backend ist constantly crawling all subscriptions.
 
 
 
-Check later to get all articles from all your subscriptions.
+## H2 Check later to get all articles from all your subscriptions.
 
 If it is the first time your subscription has been crawled you get all articles.
 ```
