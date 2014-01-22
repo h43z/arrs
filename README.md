@@ -10,7 +10,7 @@ so you can concentrate on your app alone.
 
 
 Register an API-Key
-
+```
 ~$ curl localhost:3000/register
 {
  "_id": "j9e4zmplh3",
@@ -18,6 +18,7 @@ Register an API-Key
  "subscriptions": [],
  "latestFetch": 0
 }
+```
 The "_id" value serves as API-Key.
 
 
