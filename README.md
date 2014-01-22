@@ -24,7 +24,7 @@ The "_id" value serves as API-Key.
 
 
 Add a Subscription to your account
-
+```
 ~$ curl localhost:3000/j9e4zmplh3/add/https%3A%2F%2Fnews.ycombinator.com%2Frss
 {
   "_id": "j9e4zmplh3",
@@ -37,7 +37,7 @@ Add a Subscription to your account
  ],
   "latestFetch": 0
 }
-
+```
 
 The backend ist constantly crawling all subscriptions.
 
@@ -46,7 +46,7 @@ The backend ist constantly crawling all subscriptions.
 Check later to get all articles from all your subscriptions.
 
 If it is the first time your subscription has been crawled you get all articles.
-
+```
 ~$ curl localhost:3000/j9e4zmplh3/fetch
 [
   {
@@ -61,7 +61,7 @@ If it is the first time your subscription has been crawled you get all articles.
       },
         ...
   }
-
+```
 
 The next time you fetch your feeds you only get the newest one thus the one you have
 
