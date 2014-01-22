@@ -1,0 +1,18 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "3.4.7",
+    "jade": "*",
+    "cradle": "~0.6.6",
+    "nodemon": "~1.0.11",
+    "feedparser": "~0.16.5",
+    "request": "~2.33.0",
+    "async": "~0.2.9",
+    "jsondiffpatch": "0.0.9"
+  }
+}

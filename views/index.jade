@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  h1= title
+  p Arrs is an API which allows you to get only the latest rss feeds 
+  p without fiddeling with the actual download filter and parse process
+  p so you can concentrate on your app alone.
+  
+  br
+  br
+  p 
+    b Register an API-Key
+  pre ~$ curl localhost:3000/register
+    |{
+    |  "_id": "j9e4zmplh3",
+    |  "_rev": "1-a3d6044a043ef8f72d8c0ea120c9516f",
+    |  "subscriptions": [],
+    |  "latestFetch": 0
+    |}
+  p The "_id" value serves as API-Key.
+  br
+  br
+  p
+    b Add a Subscription to your account
+  pre ~$ curl localhost:3000/j9e4zmplh3/add/https%3A%2F%2Fnews.ycombinator.com%2Frss
+    |{
+    |   "_id": "j9e4zmplh3",
+    |   "_rev": "2-a3d6044a043ef8f72d8c0ea120c9516f",
+    |   "subscriptions": [
+    |    {
+    |       "urlHash": "adb7ca764a42bad01a0ccae2df09c2fa",
+    |       "xmlUrl": "https://news.ycombinator.com/rss"
+    |    }
+    |  ],
+    |   "latestFetch": 0
+    |}
+  br
+  br
+  p The backend ist constantly crawling all subscriptions.
+  br
+  br
+  p
+    b Check later to get 
+    i 
+      b all 
+    b articles from all your subscriptions.
+  p If it is the first time your subscription has been crawled you get all articles.
+  pre ~$ curl localhost:3000/j9e4zmplh3/fetch
+    |[
+    |   {
+    |     "xmlUrl": "https://news.ycombinator.com/rss",
+    |     "articles": [
+    |       {
+    |         "title": "Google Video Quality Report",
+    |         "link": "http://www.google.com/get/videoqualityreport/",
+    |         "date": null,
+    |         "pubDate": null,
+    |         "crawled": 1390415967532
+    |       },
+    |         ...
+    |   }
+  br
+  br
+  p The next time you fetch your feeds you only get the newest one thus the one you have 
+  p not got at the last fetch.
