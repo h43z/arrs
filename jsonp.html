@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+</html>
+
+<script>
+
+var script = document.createElement('script');
+script.src = 'http://localhost:3000/register?callback=myCbFunc'
+
+document.getElementsByTagName('head')[0].appendChild(script);
+
+function myCbFunc(x){
+alert(x);
+}
+</script>
+

@@ -15,9 +15,15 @@ exports.index = function(req, res){
 
 exports.register = function(req, res){
   var apikey = (Math.random()+1).toString(36).substr(2,10);
+  var callback = req.query.callback;
+
   db.users.save(apikey, {subscriptions: [],latestFetch: 0}, function(err, resp){
     db.users.get(apikey, function(err, resp){
-      res.json(resp);
+      if(callback){
+        res.jsonp(resp);
+      }else{
+        res.json(resp);
+      }
     });
   }) 
 };
@@ -26,13 +32,18 @@ exports.add = function(req, res){
   var apikey = req.params.apikey;
   var xmlUrl = req.params.xmlUrl;
   var urlHash = md5(xmlUrl);
+  var callback = req.query.callback;
 
   db.users.get(apikey,function(err, doc){
     if(!err){
       doc.subscriptions.push({urlHash: urlHash, xmlUrl: xmlUrl});
       db.users.save(apikey,doc, function(err, resp){
         db.users.get(apikey, function(err, doc){
-          res.json(doc);
+          if(callback){
+            res.jsonp(doc);
+          }else{
+            res.json(doc);
+          }
         });
         db.sites.query({
           method: 'HEAD', 
@@ -44,18 +55,27 @@ exports.add = function(req, res){
             });
       });
     }else{
-      res.json(err);
+      if(callback){
+        res.jsonp(err);
+      }else{
+        res.json(err);
+      }
     }
   });
 };
 
 var latestFetch;
 exports.fetch = function(req, res){
-  var apikey = req.params.apikey;
+  var apikey = req.params.apikey; 
+  var callback = req.query.callback;
 
   db.users.get(apikey, function(err, doc){
     if(err){
-      res.json(err);
+      if(callback){
+        res.jsonp(err);
+      }else{
+        res.json(err);
+      }
       return;
     }
     
@@ -80,7 +100,11 @@ exports.fetch = function(req, res){
         }
       });
       
-      res.json(endResult);
+      if(callback){
+        res.jsonp(endResult);
+      }else{
+        res.json(endResult);
+      }
       doc.latestFetch = latestFetch;
       db.users.save(apikey, doc, function(){});
     });
@@ -89,8 +113,13 @@ exports.fetch = function(req, res){
 
 exports.info = function(req, res){
   var apikey = req.params.apikey;
+  var callback = req.query.callback;
   db.users.get(apikey, function(err, doc){
-    res.send(doc);
+    if(callback){
+      res.jsonp(doc);
+    }else{
+      res.json(doc);
+    }
   });
 };
 

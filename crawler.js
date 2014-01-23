@@ -3,7 +3,6 @@ var feedParser = require('feedparser');
 var request = require('request');
 var async = require('async');
 
-
 var sites = [];
 db.sites.all({include_docs:true},function(err, docs){
   docs.forEach(function(item){
@@ -12,6 +11,7 @@ db.sites.all({include_docs:true},function(err, docs){
   
   async.mapLimit(sites,5,crawl,function(err, res){});
 });
+
 
 function crawl(site,done){
   var articles = [];

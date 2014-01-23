@@ -28,8 +28,9 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/register', routes.register);
 app.get('/:apikey/add/:xmlUrl', routes.add);
-app.get('/:apikey/info',routes.info);
 app.get('/:apikey/fetch',routes.fetch);
+app.get('/:apikey/info',routes.info);
+
 app.get('/infodb',routes.infodb);
 
 http.createServer(app).listen(app.get('port'), function(){
