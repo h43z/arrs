@@ -36,3 +36,11 @@ app.get('/infodb',routes.infodb);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+crawler   = require('./crawler.js');
+(function crawlLoop(){
+  crawler.crawl();
+  setTimeout(crawlLoop, 600000);
+})()
+
+
