@@ -4,7 +4,7 @@ exports.db = function(){
     var cradle = require('cradle');
 
   cradle.setup({
-    host: 'localhost';
+    host: 'localhost',
     cache: false
   });
 
