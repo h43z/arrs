@@ -14,6 +14,7 @@ exports.index = function(req, res){
 };
 
 exports.register = function(req, res){
+console.log(db);
   var apikey = (Math.random()+1).toString(36).substr(2,10);
   var callback = req.query.callback;
 

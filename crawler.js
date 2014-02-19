@@ -10,7 +10,7 @@ exports.crawl = function(){
       sites.push({id: item._id, xmlUrl: item.meta.xmlUrl});
     });
     
-    async.mapLimit(sites,5,crawl,function(err, res){});
+    async.mapLimit(sites,3,crawl,function(err, res){});
   });
 
 
