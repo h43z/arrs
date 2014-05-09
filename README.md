@@ -7,7 +7,7 @@ without fiddeling with the actual download filter and parse process
 
 so you can concentrate on your app alone.
 
-For storing CouchDB is used.
+For storing CouchDB is used. yo
 
 
 
